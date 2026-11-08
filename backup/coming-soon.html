@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>amegh.me</title>
+<meta name="description" content="amegh.me is coming soon.">
+<meta name="theme-color" content="#101114">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #101114;
+    --fg: #f1f0ec;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", sans-serif;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    touch-action: none;
+    position: relative;
+  }
+
+  /* very faint light that follows the pointer */
+  .glow {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      560px circle at var(--mx, 50%) var(--my, 50%),
+      rgba(241, 240, 236, 0.045),
+      transparent 70%
+    );
+  }
+
+  h1 {
+    position: relative;
+    font-size: clamp(3.4rem, 16.5vw, 17rem);
+    line-height: 1;
+    letter-spacing: -0.045em;
+    font-variation-settings: "opsz" 96, "wdth" 100;
+    white-space: nowrap;
+    user-select: none;
+    cursor: default;
+  }
+  h1 .ch { display: inline-block; font-weight: 300; }
+  h1 .tld { opacity: 0.38; }
+
+  .soon {
+    position: absolute;
+    bottom: clamp(20px, 5vh, 44px);
+    left: 0; right: 0;
+    text-align: center;
+    font-size: clamp(1rem, 1.6vw, 1.25rem);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    opacity: 0.85;
+  }
+  .soon::before {
+    content: "";
+    display: inline-block;
+    width: 9px; height: 9px;
+    margin-right: 10px;
+    border-radius: 50%;
+    background: var(--fg);
+    vertical-align: 1px;
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(241, 240, 236, 0.45); }
+    50% { box-shadow: 0 0 0 8px rgba(241, 240, 236, 0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .soon::before { animation: none; }
+  }
+</style>
+</head>
+<body>
+  <div class="glow" id="glow" aria-hidden="true"></div>
+  <h1 id="word" aria-label="amegh.me">
+    <span aria-hidden="true">
+      <span class="ch">a</span><span class="ch">m</span><span class="ch">e</span><span class="ch">g</span><span class="ch">h</span><span class="ch tld">.</span><span class="ch tld">m</span><span class="ch tld">e</span>
+    </span>
+  </h1>
+  <p class="soon">Coming soon</p>
+
+<script>
+(function () {
+  var chars = Array.prototype.slice.call(document.querySelectorAll("#word .ch"));
+  var word = document.getElementById("word");
+  var glow = document.getElementById("glow");
+  var MIN = 300, MAX = 800, REST = 450;
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  var weight = chars.map(function () { return REST; });
+  var target = chars.map(function () { return REST; });
+  var pointerX = null;
+  var glowX = window.innerWidth / 2, glowY = window.innerHeight / 2;
+  var glowTX = glowX, glowTY = glowY;
+  var startTime = null;
+  var introDone = reduce;
+
+  function centers() {
+    return chars.map(function (c) {
+      var r = c.getBoundingClientRect();
+      return r.left + r.width / 2;
+    });
+  }
+
+  function aim(x, radius) {
+    var cs = centers();
+    for (var i = 0; i < chars.length; i++) {
+      var d = Math.abs(cs[i] - x) / radius;
+      target[i] = MIN + (MAX - MIN) * Math.exp(-d * d);
+    }
+  }
+
+  function rest() {
+    for (var i = 0; i < target.length; i++) target[i] = REST;
+  }
+
+  function render() {
+    for (var i = 0; i < chars.length; i++) {
+      chars[i].style.fontWeight = Math.round(weight[i]);
+    }
+    glow.style.setProperty("--mx", glowX.toFixed(1) + "px");
+    glow.style.setProperty("--my", glowY.toFixed(1) + "px");
+  }
+
+  function tick(t) {
+    if (startTime === null) startTime = t;
+    var box = word.getBoundingClientRect();
+    var radius = Math.max(120, box.width / 5);
+
+    if (pointerX !== null) {
+      introDone = true;
+      aim(pointerX, radius);
+    } else if (!introDone) {
+      var p = (t - startTime) / 2200;
+      if (p >= 1) {
+        introDone = true;
+        rest();
+      } else {
+        var sweepX = box.left - radius + p * (box.width + radius * 2);
+        aim(sweepX, radius);
+        glowTX = sweepX;
+        glowTY = box.top + box.height / 2;
+      }
+    }
+
+    for (var j = 0; j < chars.length; j++) {
+      weight[j] += (target[j] - weight[j]) * 0.14;
+    }
+    glowX += (glowTX - glowX) * 0.08;
+    glowY += (glowTY - glowY) * 0.08;
+
+    render();
+    requestAnimationFrame(tick);
+  }
+
+  window.addEventListener("pointermove", function (e) {
+    pointerX = e.clientX;
+    glowTX = e.clientX;
+    glowTY = e.clientY;
+  });
+  window.addEventListener("pointerdown", function (e) {
+    pointerX = e.clientX;
+    glowTX = e.clientX;
+    glowTY = e.clientY;
+  });
+  document.addEventListener("pointerleave", function () {
+    pointerX = null;
+    rest();
+    var box = word.getBoundingClientRect();
+    glowTX = window.innerWidth / 2;
+    glowTY = box.top + box.height / 2;
+  });
+
+  if (reduce) {
+    for (var i = 0; i < chars.length; i++) chars[i].style.fontWeight = 600;
+  } else {
+    render();
+    requestAnimationFrame(tick);
+  }
+})();
+</script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a57619247fdb46cd',t:'MTc5NDE1Njg1MQ=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a57619247fdb46cd',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

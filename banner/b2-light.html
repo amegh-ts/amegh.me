@@ -1,0 +1,32 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1584px;height:396px;overflow:hidden}
+body{font-family:Inter,system-ui,sans-serif;color:#111827;background:#faf7f0}
+.blob{position:absolute;border-radius:50%;filter:blur(2px)}
+.b1{width:520px;height:520px;left:-160px;top:-220px;background:#fde68a;opacity:.55}
+.b2{width:380px;height:380px;left:180px;bottom:-260px;background:#fcd34d;opacity:.35}
+.dots{position:absolute;left:0;top:0;width:520px;height:396px;
+  background-image:radial-gradient(#d6c9a6 1.4px,transparent 1.4px);background-size:22px 22px;opacity:.6;
+  mask-image:linear-gradient(90deg,#000,transparent)}
+.wrap{position:absolute;right:96px;top:0;bottom:0;width:860px;display:flex;flex-direction:column;justify-content:center;align-items:flex-end;text-align:right}
+.tag{display:inline-flex;align-items:center;gap:10px;font-size:18px;font-weight:600;color:#92400e;background:#fef3c7;border:1px solid #fde68a;padding:7px 14px;border-radius:999px;margin-bottom:18px}
+.tag i{width:9px;height:9px;border-radius:50%;background:#f59e0b;display:block}
+h1{font-size:54px;font-weight:800;letter-spacing:-.025em;line-height:1.08}
+h1 em{font-style:normal;color:#d97706}
+.sub{font-size:23px;color:#4b5563;margin-top:14px;font-weight:500}
+.stack{margin-top:24px;font-size:19px;font-weight:600;color:#374151;letter-spacing:.01em}
+.stack b{color:#d1a54a;margin:0 10px;font-weight:600}
+.url{position:absolute;right:96px;bottom:26px;font-size:17px;color:#9ca3af;font-weight:500}
+</style></head><body>
+<div class="blob b1"></div><div class="blob b2"></div><div class="dots"></div>
+<div class="wrap">
+  <div class="tag"><i></i>Full-Stack Developer</div>
+  <h1>I build products end-to-end<br><em>from database to interface</em></h1>
+  <div class="sub">Payments · Booking systems · Admin dashboards</div>
+  <div class="stack">Next.js<b>/</b>React<b>/</b>TypeScript<b>/</b>Node.js<b>/</b>PostgreSQL</div>
+</div>
+
+</body></html>
