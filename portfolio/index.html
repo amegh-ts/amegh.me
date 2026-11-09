@@ -74,7 +74,9 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet"></noscript>
 <style>
 :root{
   --paper:#faf7f0;
@@ -132,7 +134,8 @@ a{color:inherit}
 .layer span{font-weight:700;font-size:17px;letter-spacing:-.01em}
 .l-ui{background:var(--ink);color:var(--paper)}
 .l-api{background:var(--amber);color:var(--ink)}
-.l-db{background:var(--rust);color:#fff8ec}
+.l-db{background:#9a5208;color:#fff8ec}
+.l-db b{opacity:.92}
 .hero .slice{transform:rotate(-2deg)}
 .hero .layer{padding:22px 24px;grid-template-columns:110px 1fr}
 .hero .layer span{font-size:20px}
@@ -317,7 +320,7 @@ footer .wrap{border-top:1px solid #2c2f37;padding-top:22px;display:flex;justify-
               <li>Live balances over Socket.IO, web push alerts for budgets and due dates, installable as a PWA.</li>
               <li>Budgets with alert thresholds, loan repayment history and a six-month analytics view.</li>
             </ul>
-            <div class="links"><a href="https://github.com/TVRCloud/expense-tracker" target="_blank" rel="noopener">View code on GitHub</a></div>
+            <div class="links"><a href="https://github.com/TVRCloud/expense-tracker" target="_blank" rel="noopener" aria-label="View Finance OS code on GitHub">View code on GitHub</a></div>
           </div>
           <div class="slice" aria-label="Finance OS stack">
             <div class="layer l-ui"><b>Interface</b><span>Next.js 15, shadcn/ui, Flutter</span></div>
@@ -340,7 +343,7 @@ footer .wrap{border-top:1px solid #2c2f37;padding-top:22px;display:flex;justify-
             </ul>
             <div class="links">
               <a href="https://teamsync-one.vercel.app" target="_blank" rel="noopener">Open live demo</a>
-              <a href="https://github.com/TVRCloud/unitide" target="_blank" rel="noopener">View code on GitHub</a>
+              <a href="https://github.com/TVRCloud/unitide" target="_blank" rel="noopener" aria-label="View UniTide code on GitHub">View code on GitHub</a>
             </div>
           </div>
           <div class="slice" aria-label="UniTide stack">
