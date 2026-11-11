@@ -9,7 +9,7 @@ Personal portfolio of Amegh T S, full-stack developer. Plain HTML and CSS, no bu
   - `og-image.png` – 1200×630 social preview
   - `favicon.svg`, `apple-touch-icon.png` – icons
   - `robots.txt`, `sitemap.xml`
-- `banner/` – LinkedIn banner sources (HTML) and renders (PNG)
+- `banner/` – LinkedIn banner and social-card sources (HTML) and banner renders (PNG)
 - `backup/coming-soon.html` – the previous amegh.me "Coming soon" page
 
 ## Run locally
