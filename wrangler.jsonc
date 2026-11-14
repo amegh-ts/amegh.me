@@ -2,8 +2,16 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "misty-union-683c",
   "compatibility_date": "2026-11-08",
+  // Forces https://amegh.me (no http, no www) with 301s, then serves the static site.
+  "main": "src/index.js",
   "assets": {
-    "directory": "./portfolio"
+    "directory": "./portfolio",
+    "binding": "ASSETS",
+    // Run src/index.js before assets so http:// and www. requests are redirected too.
+    "run_worker_first": true,
+    // Clean URLs: /about serves about.html. Unknown paths return 404.html with a real 404 status.
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
   },
   "previews": {}
 }

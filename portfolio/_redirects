@@ -1,0 +1,16 @@
+# Permanent (301) redirects to the clean URLs. Without these, Cloudflare's
+# html_handling answers with temporary 307s, which Search Console reports
+# as "Page with redirect" and treats as not settled.
+/index.html                 /                   301
+/about.html                 /about              301
+/about/                     /about              301
+/work.html                  /work               301
+/work/                      /work               301
+/work/oppam.html            /work/oppam         301
+/work/oppam/                /work/oppam         301
+/work/club-travalet.html    /work/club-travalet 301
+/work/club-travalet/        /work/club-travalet 301
+/work/finance-app.html      /work/finance-app   301
+/work/finance-app/          /work/finance-app   301
+/work/unitide.html          /work/unitide       301
+/work/unitide/              /work/unitide       301
