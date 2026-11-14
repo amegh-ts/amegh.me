@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UniTide task management – Amegh</title>
+<meta name="description" content="Case study by Amegh: UniTide, a task management and team collaboration app built with Next.js 16, TanStack Query and MongoDB. Live demo and code.">
+<meta name="author" content="Amegh T S">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://amegh.me/work/unitide">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Amegh">
+<meta property="og:locale" content="en_IN">
+<meta property="og:url" content="https://amegh.me/work/unitide">
+<meta property="og:title" content="UniTide task management – Amegh">
+<meta property="og:description" content="Case study by Amegh: UniTide, a task management and team collaboration app built with Next.js 16, TanStack Query and MongoDB. Live demo and code.">
+<meta property="og:image" content="https://amegh.me/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Amegh T S, Full-Stack Developer: I build products end-to-end, from database to interface.">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="UniTide task management – Amegh">
+<meta name="twitter:description" content="Case study by Amegh: UniTide, a task management and team collaboration app built with Next.js 16, TanStack Query and MongoDB. Live demo and code.">
+<meta name="twitter:image" content="https://amegh.me/og-image.png">
+<meta name="twitter:image:alt" content="Amegh T S, Full-Stack Developer: I build products end-to-end, from database to interface.">
+
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://amegh.me/work/unitide#article",
+      "headline": "UniTide task management – Amegh",
+      "description": "Case study by Amegh: UniTide, a task management and team collaboration app built with Next.js 16, TanStack Query and MongoDB. Live demo and code.",
+      "url": "https://amegh.me/work/unitide",
+      "mainEntityOfPage": "https://amegh.me/work/unitide",
+      "dateModified": "2026-11-14",
+      "image": "https://amegh.me/og-image.png",
+      "author": {
+        "@type": "Person",
+        "@id": "https://amegh.me/#person",
+        "name": "Amegh T S",
+        "url": "https://amegh.me/about"
+      },
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://amegh.me/#person",
+        "name": "Amegh T S",
+        "url": "https://amegh.me/about"
+      },
+      "isPartOf": {
+        "@id": "https://amegh.me/#website"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://amegh.me/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Work",
+          "item": "https://amegh.me/#work"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "UniTide",
+          "item": "https://amegh.me/work/unitide"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="/page.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="hero" id="top">
+  <div class="nav">
+    <a href="/">Amegh</a>
+    <nav aria-label="Main"><a href="/about">About</a><a href="/#work">Work</a><a href="/#experience">Experience</a><a href="#contact">Contact</a></nav>
+  </div>
+  <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/#work">Work</a></li><li aria-current="page">UniTide</li></ol></nav>
+  <h1>UniTide</h1>
+  <div class="g">
+    <div class="about">
+      <h2 class="col-h">Overview</h2>
+      <p>A workspace for teams to run projects: assign tasks, track progress, manage clients and comment as they go.</p>
+    </div>
+    <div class="c">
+      <h2 class="col-h">Type</h2>
+      <ul><li>Personal project</li></ul>
+    </div>
+    <div class="c">
+      <h2 class="col-h">Status</h2>
+      <ul><li>Live demo</li></ul>
+    </div>
+    <div class="c">
+      <h2 class="col-h">Written by</h2>
+      <ul><li><a class="u" href="/about" rel="author">Amegh</a></li><li>14 Nov 2026</li></ul>
+    </div>
+  </div>
+</header>
+
+<main id="content">
+  <section class="blk g" aria-labelledby="s0">
+    <h2 class="sec" id="s0">What it does</h2>
+    <div class="meta"><b>Modules</b>Projects to comments</div>
+    <div class="body">
+      <ul>
+        <li>Modules for projects, tasks, teams, clients and comments, with admin and user roles.</li>
+        <li>Login with OTP over email or mobile, or with a password.</li>
+        <li>Forms validated end-to-end with React Hook Form and Zod.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="blk g alt" aria-labelledby="stack">
+    <h2 class="sec" id="stack">Built with</h2>
+    <div class="meta"><b>Stack</b>Tools and services</div>
+    <div class="body">
+      <p>Next.js 16, shadcn/ui, TanStack Query, MongoDB, Mongoose</p>
+      <div class="acts"><a class="u" href="https://teamsync-one.vercel.app" target="_blank" rel="noopener">Open live demo</a><a class="u" href="https://github.com/TVRCloud/unitide" target="_blank" rel="noopener">View code on GitHub</a></div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact g" aria-labelledby="close-title">
+    <h2 class="sec" id="close-title">Read next</h2>
+    <p>Another project by Amegh.</p>
+    <a class="big" href="/work/finance-app">Finance App</a>
+    <div class="more">
+      <a class="u" href="/#work">All work</a>
+      <a class="u" href="/about">About Amegh</a>
+      <a class="u" href="mailto:hey@amegh.me">Email hey@amegh.me</a>
+    </div>
+  </section>
+</main>
+
+<footer><span>Amegh (Amegh T S), Kozhikode, Kerala</span><a href="/">amegh.me</a></footer>
+<script src="/hover.js" defer></script>
+</body>
+</html>
