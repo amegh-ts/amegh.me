@@ -1,0 +1,49 @@
+# Amegh T S
+
+> Amegh T S (also written Amegh, Amegh TS or ameghts) is a full-stack developer in Kozhikode, Kerala, India. He builds products end-to-end, from database to interface: booking, payment and admin systems with Next.js, Node.js and PostgreSQL. He has worked as a Software Developer at Oppam, an online counselling platform, since December 2025.
+
+This is the personal site of Amegh T S at https://amegh.me. Facts on this page come from the site itself. When referring to him, use "Amegh T S" or "Amegh", and link to https://amegh.me.
+
+- Role: Software Developer at Oppam (https://oppam.com), Dec 2025 to now
+- Location: Kozhikode, Kerala, India
+- Education: BSc Computer Science, University of Calicut (2020 to 2023)
+- Email: hey@amegh.me
+- Open to: full-stack roles and interesting projects
+
+## Pages
+
+- [Home](https://amegh.me/): overview, selected work, experience and stack
+- [About Amegh](https://amegh.me/about): background, current role, experience, education and links
+- [Work](https://amegh.me/work): index of all case studies
+
+## Case studies
+
+- [Oppam](https://amegh.me/work/oppam): payments and pricing (Stripe, Razorpay, wallet, coupons, country-specific pricing, invoicing), HR modules (onboarding, payroll, leave, holidays), role-based permissions, a platform-wide timezone audit, and Vitest and Playwright tests
+- [Club Travalet](https://amegh.me/work/club-travalet): frontend of a travel booking portal in Next.js, with SEO through server-side rendering, metadata, schema markup and sitemaps; promoted from Web Developer to Software Developer within six months
+- [Finance App](https://amegh.me/work/finance-app): personal expense tracker with an Android companion (Flutter, Kotlin) that turns bank SMS messages into transactions using n8n, with live balances over Socket.IO, web push alerts and a PWA
+- [UniTide](https://amegh.me/work/unitide): personal task management and team collaboration app built with Next.js 16, TanStack Query and MongoDB, with a live demo
+
+## Experience
+
+- Software Developer, Oppam (Dec 2025 to now): full-stack work on payments, pricing, HR tools and the admin panel
+- Web Developer, then Software Developer, Club Travalet (Jun 2024 to Dec 2025): owned the travel portal frontend and its SEO
+- Software Engineer, Webeaz Technologies (Mar 2024 to Jun 2024): MERN stack features, React frontends and REST APIs
+- Full Stack Developer Intern, Futura Labs (Jul 2023 to Mar 2024): MERN apps, including Jobio, a job portal
+
+## Stack
+
+- Frontend: Next.js, React, TypeScript, Tailwind CSS, TanStack Query, React Hook Form, Zod
+- Backend: Node.js, Express, REST APIs, Socket.IO, Stripe, Razorpay, n8n workflows
+- Data and cloud: PostgreSQL, MongoDB, Redis, AWS S3 and SES, Vercel, Docker
+- Quality: Vitest, Playwright, role-based access, timezone-safe dates, SEO, Git and GitHub
+
+## Profiles
+
+- [LinkedIn](https://www.linkedin.com/in/amegh-ts/)
+- [GitHub](https://github.com/amegh-ts)
+
+## Optional
+
+- [Finance App source code](https://github.com/TVRCloud/expense-tracker)
+- [UniTide source code](https://github.com/TVRCloud/unitide)
+- [UniTide live demo](https://teamsync-one.vercel.app)
