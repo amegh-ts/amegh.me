@@ -17,6 +17,7 @@ Personal portfolio of Amegh T S, full-stack developer. Plain HTML and CSS, no bu
   - `work.html`, `404.html` – work index and the not-found page (served with a real 404, `noindex`)
   - `_redirects` – 301s from `.html` and trailing-slash URLs to the clean URLs
   - `_headers` – HSTS and other response headers
+  - `llms.txt` – plain-text summary of the site for AI tools ([llmstxt.org](https://llmstxt.org)); `noindex` so it stays out of Google results. Update it when pages, role or stack change.
 - `src/index.js` – Worker that runs before the static files and 301s every `http://` or `www.` request to `https://amegh.me/...`, so each page has one address that matches its canonical tag
 - `banner/` – LinkedIn banner sources (HTML) and renders (PNG)
 - `backup/coming-soon.html` – the previous amegh.me "Coming soon" page
