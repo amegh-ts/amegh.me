@@ -1,4 +1,5 @@
 /* Shared styles for /about and /work/*. Mirrors the home page design in index.html. */
+@font-face{font-family:"Bricolage Grotesque";src:url(/fonts/bricolage-grotesque-latin.woff2) format("woff2");font-weight:300 800;font-style:normal;font-display:swap}
 :root{
   --bg:#fff;--band:#f5f5f7;--ink:#111214;--mute:#6a6e78;--line:rgba(0,0,0,.12);--accent:#0066cc;--strike:#f4e11b;--strike-ink:#14130a;--strike-mute:#54500f;
   --pad:clamp(20px,4vw,56px);
