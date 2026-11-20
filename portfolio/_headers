@@ -5,3 +5,9 @@
 
 /sitemap.xml
   Content-Type: application/xml; charset=utf-8
+
+# Summary for AI tools (llmstxt.org). Readable by any crawler, but kept out of
+# Google results so it never competes with the HTML pages.
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+  X-Robots-Tag: noindex
