@@ -56,7 +56,7 @@
       "@id": "https://amegh.me/#webpage",
       "url": "https://amegh.me/",
       "name": "Amegh | Full-Stack Developer in Kerala – Amegh T S",
-      "dateModified": "2026-11-14",
+      "dateModified": "2026-11-14T15:30:01+05:30",
       "isPartOf": { "@id": "https://amegh.me/#website" },
       "about": { "@id": "https://amegh.me/#person" },
       "primaryImageOfPage": "https://amegh.me/amegh-ts.webp"
@@ -84,12 +84,9 @@
   ]
 }
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap">
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet"></noscript>
+<link rel="preload" href="/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+@font-face{font-family:"Bricolage Grotesque";src:url(/fonts/bricolage-grotesque-latin.woff2) format("woff2");font-weight:300 800;font-style:normal;font-display:swap}
 :root{
   --bg:#fff;--band:#f5f5f7;--ink:#111214;--mute:#6a6e78;--line:rgba(0,0,0,.12);--accent:#0066cc;--strike:#f4e11b;--strike-ink:#14130a;--strike-mute:#54500f;
   --pad:clamp(20px,4vw,56px);
@@ -137,6 +134,7 @@ a{color:inherit}
 
 /* work: one full-bleed block per project, alternating quiet band */
 .work-head{padding:clamp(64px,10vw,150px) var(--pad) clamp(24px,4vw,56px)}
+.work-head p{margin-top:16px;font-size:18px}
 h2.sec{font-size:clamp(30px,4.4vw,64px);letter-spacing:-.04em;line-height:1;font-weight:600}
 .proj{padding-block:clamp(56px,9vw,130px)}
 .proj.alt{background:var(--strike);--ink:var(--strike-ink);--mute:var(--strike-mute);--line:rgba(20,19,10,.28);--accent:#14130a;color:var(--ink)}
@@ -188,6 +186,7 @@ footer{padding:24px var(--pad) 36px;display:flex;justify-content:space-between;g
   .contact p{grid-column:1/-1}
 }
 </style>
+<script type="speculationrules">{"prerender":[{"where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":"/*.*"}}]},"eagerness":"moderate"}]}</script>
 </head>
 <body>
 <a class="skip" href="#work">Skip to work</a>
@@ -200,7 +199,7 @@ footer{padding:24px var(--pad) 36px;display:flex;justify-content:space-between;g
   <h1 id="word" aria-label="I build products end-to-end, from database to interface."><span class="ln" aria-hidden="true">I build products</span> <span class="ln" aria-hidden="true">end-to-end,</span> <span class="ln" aria-hidden="true">from database</span> <span class="ln" aria-hidden="true">to interface.</span></h1>
   <div class="g">
     <div class="about">
-      <img class="me" src="/amegh-ts.webp" alt="Amegh T S, full-stack developer in Kerala" width="460" height="460" decoding="async">
+      <img class="me" src="/amegh-ts-144.webp" srcset="/amegh-ts-144.webp 144w, /amegh-ts.webp 460w" sizes="72px" alt="Amegh T S, full-stack developer in Kerala" width="460" height="460" decoding="async">
       <h2 class="col-h">About</h2>
       <p>Hi, I'm Amegh, a full-stack developer in Kozhikode, Kerala. Three years shipping booking, payment and admin systems with Next.js, Node.js and PostgreSQL. <a class="u" href="/about">More about me</a></p>
     </div>
@@ -225,7 +224,7 @@ footer{padding:24px var(--pad) 36px;display:flex;justify-content:space-between;g
 
 <main>
   <section id="work" aria-labelledby="work-title">
-    <div class="work-head"><h2 class="sec" id="work-title">Selected work</h2></div>
+    <div class="work-head"><h2 class="sec" id="work-title">Selected work</h2><p><a class="u" href="/work">See all case studies</a></p></div>
 
     <article class="proj g">
       <h3>Oppam</h3>
@@ -240,7 +239,7 @@ footer{padding:24px var(--pad) 36px;display:flex;justify-content:space-between;g
           <li>Wrote Vitest and Playwright end-to-end tests for critical flows.</li>
         </ul>
         <p class="stack"><b>Built with</b> Next.js, React Query, Tailwind, Node.js, Express, Socket.IO, PostgreSQL, Sequelize, AWS S3, SES and Scheduler</p>
-        <div class="acts"><a class="u" href="/work/oppam">Read the case study</a><a class="u" href="https://oppam.com" target="_blank" rel="noopener">Visit oppam.com</a></div>
+        <div class="acts"><a class="u" href="/work/oppam">Read the Oppam case study</a><a class="u" href="https://oppam.com" target="_blank" rel="noopener">Visit oppam.com</a></div>
       </div>
     </article>
 
@@ -255,7 +254,7 @@ footer{padding:24px var(--pad) 36px;display:flex;justify-content:space-between;g
           <li>Promoted from Web Developer to Software Developer within six months.</li>
         </ul>
         <p class="stack"><b>Built with</b> Next.js, Tailwind CSS, server-side rendering, schema markup, sitemaps</p>
-        <div class="acts"><a class="u" href="/work/club-travalet">Read the case study</a><a class="u" href="https://www.clubtravalet.com/" target="_blank" rel="noopener">Visit clubtravalet.com</a></div>
+        <div class="acts"><a class="u" href="/work/club-travalet">Read the Club Travalet case study</a><a class="u" href="https://www.clubtravalet.com/" target="_blank" rel="noopener">Visit clubtravalet.com</a></div>
       </div>
     </article>
 
@@ -271,7 +270,7 @@ footer{padding:24px var(--pad) 36px;display:flex;justify-content:space-between;g
           <li>Budgets with alert thresholds, loan repayment history and a six-month analytics view.</li>
         </ul>
         <p class="stack"><b>Built with</b> Next.js 15, shadcn/ui, Flutter, Kotlin, Socket.IO, n8n, MongoDB, Redis, web push, PWA</p>
-        <div class="acts"><a class="u" href="/work/finance-app">Read the case study</a><a class="u" href="https://github.com/TVRCloud/expense-tracker" target="_blank" rel="noopener" aria-label="View Finance App code on GitHub">View code on GitHub</a></div>
+        <div class="acts"><a class="u" href="/work/finance-app">Read the Finance App case study</a><a class="u" href="https://github.com/TVRCloud/expense-tracker" target="_blank" rel="noopener">View Finance App code on GitHub</a></div>
       </div>
     </article>
 
@@ -287,9 +286,9 @@ footer{padding:24px var(--pad) 36px;display:flex;justify-content:space-between;g
         </ul>
         <p class="stack"><b>Built with</b> Next.js 16, shadcn/ui, TanStack Query, MongoDB, Mongoose</p>
         <div class="acts">
-          <a class="u" href="/work/unitide">Read the case study</a>
+          <a class="u" href="/work/unitide">Read the UniTide case study</a>
           <a class="u" href="https://teamsync-one.vercel.app" target="_blank" rel="noopener">Open live demo</a>
-          <a class="u" href="https://github.com/TVRCloud/unitide" target="_blank" rel="noopener" aria-label="View UniTide code on GitHub">View code on GitHub</a>
+          <a class="u" href="https://github.com/TVRCloud/unitide" target="_blank" rel="noopener">View UniTide code on GitHub</a>
         </div>
       </div>
     </article>
