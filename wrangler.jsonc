@@ -4,6 +4,13 @@
   "compatibility_date": "2026-11-08",
   // Forces https://amegh.me (no http, no www) with 301s, then serves the static site.
   "main": "src/index.js",
+  // Custom domains. Deploying creates the DNS records and certificates for both.
+  // www.amegh.me is only there so people typing "www" land on the site:
+  // src/index.js answers it with a 301 to https://amegh.me/<path>.
+  "routes": [
+    { "pattern": "amegh.me", "custom_domain": true },
+    { "pattern": "www.amegh.me", "custom_domain": true }
+  ],
   "assets": {
     "directory": "./portfolio",
     "binding": "ASSETS",
