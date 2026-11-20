@@ -84,12 +84,9 @@
   ]
 }
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap">
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet"></noscript>
+<link rel="preload" href="/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+@font-face{font-family:"Bricolage Grotesque";src:url(/fonts/bricolage-grotesque-latin.woff2) format("woff2");font-weight:300 800;font-style:normal;font-display:swap}
 :root{
   --bg:#fff;--band:#f5f5f7;--ink:#111214;--mute:#6a6e78;--line:rgba(0,0,0,.12);--accent:#0066cc;--strike:#f4e11b;--strike-ink:#14130a;--strike-mute:#54500f;
   --pad:clamp(20px,4vw,56px);
@@ -189,6 +186,7 @@ footer{padding:24px var(--pad) 36px;display:flex;justify-content:space-between;g
   .contact p{grid-column:1/-1}
 }
 </style>
+<script type="speculationrules">{"prerender":[{"where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":"/*.*"}}]},"eagerness":"moderate"}]}</script>
 </head>
 <body>
 <a class="skip" href="#work">Skip to work</a>

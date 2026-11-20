@@ -16,7 +16,8 @@ Personal portfolio of Amegh T S, full-stack developer. Plain HTML and CSS, no bu
   - `robots.txt`, `sitemap.xml`
   - `work.html`, `404.html` – work index and the not-found page (served with a real 404, `noindex`)
   - `_redirects` – 301s from `.html` and trailing-slash URLs to the clean URLs
-  - `_headers` – HSTS and other response headers
+  - `_headers` – HSTS and other response headers, cache rules (font 1 year, images 1 week, CSS/JS 1 hour) and preload hints
+  - `fonts/` – Bricolage Grotesque, self-hosted: Latin characters only, pinned to the settings the site uses (optical size 96, width 100, weight 300–800), 25 KB. License in `fonts/OFL.txt`. The font is cached for a year, so a changed font file needs a new file name.
   - `llms.txt` – plain-text summary of the site for AI tools ([llmstxt.org](https://llmstxt.org)); `noindex` so it stays out of Google results. Update it when pages, role or stack change.
 - `src/index.js` – Worker that runs before the static files and 301s every `http://` or `www.` request to `https://amegh.me/...`, so each page has one address that matches its canonical tag
 - `banner/` – LinkedIn banner sources (HTML) and renders (PNG)
@@ -41,3 +42,9 @@ Connect this repo, leave the build command empty, and set the build output direc
 - Canonical tag: absolute `https://amegh.me/<path>`, no trailing slash, no `.html`, no query string. It must match the sitemap `<loc>` and `og:url`.
 - Link internally with clean paths (`/about`, `/work/oppam`), never `.html`.
 - Add the page to `sitemap.xml` and, if it has `.html`/slash variants, to `_redirects`.
+
+## Performance rules
+
+- No third-party requests on page load: fonts and images are served from amegh.me.
+- Every page has a Speculation Rules block, so Chrome prerenders internal pages on hover and clicks open instantly.
+- Keep the profile photo small where it's displayed small (`amegh-ts-144.webp` with `srcset`).
