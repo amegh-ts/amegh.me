@@ -30,6 +30,14 @@ Opens http://localhost:8765/ with live reload. Clean URLs (`/about`, `/work/oppa
 
 `wrangler.jsonc` runs `npm run build` before every deploy and branch preview (`build.command`) and serves `dist/`. Merging to `main` deploys amegh.me.
 
+## Checks (CI)
+
+- **Before merge** (`.github/workflows/ci.yml`, every pull request into develop or main, and pushes to develop): installs, syntax-checks the scripts, builds, runs `npm run check` and confirms the build is reproducible. Pull requests also check that only `develop` merges into `main` and that every commit is by the amegh-ts account with no co-author lines.
+- `npm run check` (`scripts/check-site.mjs`) fails on: missing or wrong canonical / `og:url` / robots, titles over 60 or descriptions outside 70–160 characters, duplicate titles or descriptions, missing Open Graph, Twitter or article tags, invalid JSON-LD or dates, Person data that differs from `site/pages.js`, more or fewer than one `h1`, images without alt or size, broken links, anchors or assets, `.html` links, pages not reachable from home, case studies not linking to each other, the same sentence on two pages, sitemap not matching the pages, missing `_redirects` 301s, third-party scripts or stylesheets.
+- **After merge** (`.github/workflows/deploy-check.yml`, pushes to main): waits until amegh.me serves this commit's build, then `npm run check:live` checks every page's status and HTML, the 404, http/www/`.html`/slash 301s, HSTS, sitemap, robots, `llms.txt` noindex and asset caching. It warns when Cloudflare injects scripts into the pages.
+
+Run both locally: `npm run build && npm run check`, and `npm run check:live` after a deploy.
+
 ## Adding or changing a page
 
 1. Add or edit the HTML file in `site/` (copy an existing page for the markers).

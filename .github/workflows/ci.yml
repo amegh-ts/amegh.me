@@ -1,0 +1,85 @@
+# Pre-merge checks. Runs on every pull request into develop or main, and on
+# pushes to develop. A pull request should only be merged when this is green.
+name: CI
+
+on:
+  pull_request:
+    branches: [develop, main]
+  push:
+    branches: [develop]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  site:
+    name: Build and check site
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Syntax check build and check scripts
+        run: |
+          node --check vite.config.js
+          for f in site/*.js site/scripts/*.js scripts/*.mjs src/*.js; do node --check "$f"; done
+
+      - name: Build
+        run: npm run build
+
+      - name: Check SEO, structured data, links, sitemap and duplicate content
+        run: npm run check
+
+      - name: Build is reproducible
+        run: |
+          mv dist dist-first
+          npm run build
+          diff -r dist-first dist
+
+  rules:
+    name: Repository rules
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Only develop merges into main
+        if: github.base_ref == 'main'
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+        run: |
+          if [ "$HEAD_REF" != "develop" ]; then
+            echo "::error::Pull requests into main must come from develop (got $HEAD_REF)."
+            exit 1
+          fi
+
+      - name: Commits are by the amegh-ts account, with no AI co-author lines
+        env:
+          BASE_REF: ${{ github.base_ref }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          EMAIL="80452444+amegh-ts@users.noreply.github.com"
+          RANGE="origin/$BASE_REF..$HEAD_SHA"
+          bad=0
+          for c in $(git rev-list --no-merges "$RANGE"); do
+            ae=$(git log -1 --format=%ae "$c")
+            if [ "$ae" != "$EMAIL" ]; then echo "::error::$c authored by $ae"; bad=1; fi
+            if git log -1 --format=%B "$c" | grep -qiE 'co-authored-by|generated with'; then
+              echo "::error::$c has a co-author or generated-by line"; bad=1
+            fi
+          done
+          exit $bad
