@@ -1,47 +1,47 @@
 # amegh.me
 
-Personal portfolio of Amegh T S, full-stack developer. Plain HTML and CSS, no build step.
+Personal portfolio of Amegh T S, full-stack developer. Static HTML and CSS, built with [Vite](https://vite.dev) and served by Cloudflare Workers.
 
 ## Structure
 
-- `portfolio/` – the live site (deploy this folder)
-  - `index.html` – home page, with SEO meta, Open Graph and JSON-LD (WebSite, WebPage, Person)
-  - `about.html` – served at `/about`, ProfilePage JSON-LD
-  - `work/*.html` – case studies served at `/work/<slug>`, Article + BreadcrumbList JSON-LD
-  - `page.css`, `hover.js` – shared styles and heading effect for `/about` and `/work/*`, matching the home page
-  - `amegh-ts.webp` – profile photo
-  - `favicon.ico`, `icon-192.png`, `icon-512.png`, `site.webmanifest` – icons and manifest
-  - `og-image.png` – 1200×630 social preview
-  - `favicon.svg`, `apple-touch-icon.png` – icons
-  - `robots.txt`, `sitemap.xml`
-  - `work.html`, `404.html` – work index and the not-found page (served with a real 404, `noindex`)
-  - `_redirects` – 301s from `.html` and trailing-slash URLs to the clean URLs
-  - `_headers` – HSTS and other response headers, cache rules (font 1 year, images 1 week, CSS/JS 1 hour) and preload hints
-  - `fonts/` – Bricolage Grotesque, self-hosted: Latin characters only, pinned to the settings the site uses (optical size 96, width 100, weight 300–800), 25 KB. License in `fonts/OFL.txt`. The font is cached for a year, so a changed font file needs a new file name.
-  - `llms.txt` – plain-text summary of the site for AI tools ([llmstxt.org](https://llmstxt.org)); `noindex` so it stays out of Google results. Update it when pages, role or stack change.
-- `src/index.js` – Worker that runs before the static files and 301s every `http://` or `www.` request to `https://amegh.me/...`, so each page has one address that matches its canonical tag
+- `site/` – source of the site (Vite root)
+  - `index.html`, `about.html`, `work.html`, `work/*.html`, `404.html` – one file per page, holding only that page's content
+  - `pages.js` – page data: title, description, breadcrumbs, dates, and the Person details (name, sameAs) used in JSON-LD. Edit here, not in each page.
+  - `layout.js` – builds the shared `<head>` (meta, Open Graph, Twitter, icons, JSON-LD), nav, breadcrumbs and footer. Pages mark where they go with `<!-- @head -->`, `<!-- @nav -->`, `<!-- @crumbs -->` and `<!-- @footer -->`.
+  - `styles/site.css` – all styles; inlined into every page at build time (no CSS request)
+  - `scripts/hover.js` – heading weight effect; bundled to `/assets/hover-<hash>.js`
+  - `public/` – copied as-is: fonts, images, icons, `_headers`, `_redirects`, `robots.txt`, `llms.txt`, `site.webmanifest`, `og-image.png`
+- `vite.config.js` – multi-page build, clean URLs in dev, CSS inlining and `sitemap.xml` generation
+- `dist/` – build output (ignored by git), deployed by Cloudflare
+- `src/index.js` – Worker that runs before the static files and 301s every `http://` or `www.` request to `https://amegh.me/...`
 - `banner/` – LinkedIn banner sources (HTML) and renders (PNG)
 - `backup/coming-soon.html` – the previous amegh.me "Coming soon" page
 
 ## Run locally
 
 ```bash
-npx wrangler dev --port 4173
+npm install
+npm run dev
 ```
 
-This runs Cloudflare's local runtime, so clean URLs like `/about` and `/work/oppam` resolve the same way as in production (`.html` URLs redirect to them). A plain `python3 -m http.server 4173 --directory portfolio` also works, but then you have to add `.html` to subpage URLs.
+Opens http://localhost:8765/ with live reload. Clean URLs (`/about`, `/work/oppam`) work as in production. `npm run build` writes `dist/`; `npm run preview` serves the built site on the same port.
 
-`about.html` and `work/*.html` are plain static files; edit them directly.
+## Deploy (Cloudflare Workers Builds)
 
-## Deploy (Cloudflare Pages)
+`wrangler.jsonc` runs `npm run build` before every deploy and branch preview (`build.command`) and serves `dist/`. Merging to `main` deploys amegh.me.
 
-Connect this repo, leave the build command empty, and set the build output directory to `portfolio`. Add `amegh.me` as a custom domain.
+## Adding or changing a page
+
+1. Add or edit the HTML file in `site/` (copy an existing page for the markers).
+2. Add or update its entry in `site/pages.js`, and bump `modified` when the content changes. The sitemap, `dateModified` and `article:modified_time` follow.
+3. Update `site/public/llms.txt` if pages, role or stack change.
 
 ## SEO rules for new pages
 
 - Canonical tag: absolute `https://amegh.me/<path>`, no trailing slash, no `.html`, no query string. It must match the sitemap `<loc>` and `og:url`.
 - Link internally with clean paths (`/about`, `/work/oppam`), never `.html`.
-- Add the page to `sitemap.xml` and, if it has `.html`/slash variants, to `_redirects`.
+- Add the page to `site/pages.js` (the sitemap is generated from it) and add its `.html`/slash variants to `site/public/_redirects`.
+- Write each page's text for that page only. The home page carries short teasers; full details live on /about and the case studies.
 
 ## Performance rules
 

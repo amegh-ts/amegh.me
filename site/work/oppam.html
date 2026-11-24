@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- @head -->
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="hero" id="top">
+  <!-- @nav -->
+  <!-- @crumbs -->
+  <h1>Oppam</h1>
+  <div class="g">
+    <div class="about">
+      <h2 class="col-h">Overview</h2>
+      <p>Payments, pricing and internal tools for an online counselling platform, and the tests that keep them honest.</p>
+    </div>
+    <div class="c">
+      <h2 class="col-h">Role</h2>
+      <ul><li>Software Developer</li></ul>
+    </div>
+    <div class="c">
+      <h2 class="col-h">When</h2>
+      <ul><li>Dec 2025 to now</li></ul>
+    </div>
+    <div class="c">
+      <h2 class="col-h">Written by</h2>
+      <ul><li><a class="u" href="/about" rel="author">Amegh</a></li><li>Updated 24 Nov 2026</li></ul>
+    </div>
+  </div>
+</header>
+
+<main id="content">
+  <section class="blk g" aria-labelledby="s0">
+    <h2 class="sec" id="s0">The product</h2>
+    <div class="meta"><b>Context</b>Two sides of one platform</div>
+    <div class="body">
+      <p><a class="u" href="https://oppam.com" target="_blank" rel="noopener">Oppam</a> is an online counselling platform. Clients find a counsellor, book a session and pay online. Behind that, the Oppam team runs the business from an internal admin panel.</p>
+      <p>I joined as a Software Developer in December 2025 and work across the stack: PostgreSQL models with Sequelize, Express APIs on Node.js, and the Next.js screens on top.</p>
+    </div>
+  </section>
+
+  <section class="blk g alt" aria-labelledby="s1">
+    <h2 class="sec" id="s1">Payments and pricing</h2>
+    <div class="meta"><b>Billing</b>Stripe, Razorpay, wallet</div>
+    <div class="body">
+      <p>A booking isn't done until it's paid for, so this is where mistakes cost the most. I built the payment and pricing systems end to end:</p>
+      <ul>
+        <li><b>Two gateways.</b> Stripe and Razorpay, behind one payment flow.</li>
+        <li><b>A wallet</b> on the platform.</li>
+        <li><b>Coupons</b> for discounts.</li>
+        <li><b>Country-specific pricing.</b></li>
+        <li><b>Invoicing.</b></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="blk g" aria-labelledby="s2">
+    <h2 class="sec" id="s2">Admin and HR tools</h2>
+    <div class="meta"><b>Internal</b>For the Oppam team</div>
+    <div class="body">
+      <p>The admin panel is where the team works every day, so it gets the same care as the client side.</p>
+      <ul>
+        <li><b>HR modules</b> for employee onboarding, payroll, leave and holidays.</li>
+        <li><b>Role-based permissions</b> across the admin panel, so each person sees and changes only what their role allows.</li>
+        <li><b>A redesign</b> of key admin screens.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="blk g alt" aria-labelledby="s3">
+    <h2 class="sec" id="s3">The timezone audit</h2>
+    <div class="meta"><b>Reliability</b>Platform-wide</div>
+    <div class="body">
+      <p>Bookings and reminders only work if every part of the system agrees on what time it is. I led a platform-wide audit of how dates and times are handled, and fixed the booking and reminder bugs it turned up.</p>
+      <p class="note">A longer write-up of this audit is planned for the blog.</p>
+    </div>
+  </section>
+
+  <section class="blk g" aria-labelledby="s4">
+    <h2 class="sec" id="s4">Testing</h2>
+    <div class="meta"><b>Quality</b>Critical flows</div>
+    <div class="body">
+      <p>Payment and booking changes are risky to ship by eye. I wrote Vitest tests and Playwright end-to-end tests for the critical flows, so they're checked automatically instead of by hand.</p>
+    </div>
+  </section>
+
+  <section class="blk g alt" aria-labelledby="stack">
+    <h2 class="sec" id="stack">Built with</h2>
+    <div class="meta"><b>Stack</b>Tools and services</div>
+    <div class="body">
+      <table class="stack-t">
+        <tr><th scope="row">Frontend</th><td>Next.js, React Query, Tailwind CSS</td></tr>
+        <tr><th scope="row">Backend</th><td>Node.js, Express, Socket.IO</td></tr>
+        <tr><th scope="row">Data</th><td>PostgreSQL, Sequelize</td></tr>
+        <tr><th scope="row">Cloud</th><td>AWS S3, SES and Scheduler</td></tr>
+        <tr><th scope="row">Payments</th><td>Stripe, Razorpay</td></tr>
+        <tr><th scope="row">Testing</th><td>Vitest, Playwright</td></tr>
+      </table>
+      <div class="acts"><a class="u" href="https://oppam.com" target="_blank" rel="noopener">Visit oppam.com</a></div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact g" aria-labelledby="close-title">
+    <h2 class="sec" id="close-title">Read next</h2>
+    <p>Before Oppam, I built a travel portal.</p>
+    <a class="big" href="/work/club-travalet">Club Travalet</a>
+    <div class="more">
+      <a class="u" href="/work">All work</a>
+      <a class="u" href="/about">About Amegh</a>
+      <a class="u" href="mailto:hey@amegh.me">Email hey@amegh.me</a>
+    </div>
+  </section>
+</main>
+
+<!-- @footer -->
+</body>
+</html>

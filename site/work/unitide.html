@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- @head -->
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="hero" id="top">
+  <!-- @nav -->
+  <!-- @crumbs -->
+  <h1>UniTide</h1>
+  <div class="g">
+    <div class="about">
+      <h2 class="col-h">Overview</h2>
+      <p>A team workspace where projects, tasks, chat and time reports live in one place, with a public demo.</p>
+    </div>
+    <div class="c">
+      <h2 class="col-h">Type</h2>
+      <ul><li>Personal project</li></ul>
+    </div>
+    <div class="c">
+      <h2 class="col-h">Status</h2>
+      <ul><li>Live demo</li></ul>
+    </div>
+    <div class="c">
+      <h2 class="col-h">Written by</h2>
+      <ul><li><a class="u" href="/about" rel="author">Amegh</a></li><li>Updated 24 Nov 2026</li></ul>
+    </div>
+  </div>
+</header>
+
+<main id="content">
+  <section class="blk g" aria-labelledby="s0">
+    <h2 class="sec" id="s0">What it is</h2>
+    <div class="meta"><b>Context</b>Task management and collaboration</div>
+    <div class="body">
+      <p>UniTide is a task management and team collaboration app. A team creates projects, breaks them into tasks, assigns people and tracks progress, and talks about the work in the same place it happens.</p>
+      <p>I built it as a personal project to work through a full product surface in one Next.js codebase: many connected modules, roles and permissions, and forms that stay valid from the browser to the database.</p>
+    </div>
+  </section>
+
+  <section class="blk g alt" aria-labelledby="s1">
+    <h2 class="sec" id="s1">Modules</h2>
+    <div class="meta"><b>In the app</b>Projects to timesheets</div>
+    <div class="body">
+      <ul>
+        <li><b>Projects:</b> create and edit them, assign team members, and track status and timeline, with separate views for active and completed projects.</li>
+        <li><b>Tasks:</b> assign them to people, move them through pending, in progress and completed, and set due dates and priority.</li>
+        <li><b>Teams and members:</b> create teams, add and remove members, and link teams to projects.</li>
+        <li><b>Comments and chat:</b> comments on tasks and projects, plus chat between members.</li>
+        <li><b>Calendar and notifications.</b></li>
+        <li><b>Reports</b> with a timesheet view.</li>
+        <li><b>Activity log:</b> task updates, logins and project edits, recorded per user and project.</li>
+        <li><b>Tags, workspace settings and session management.</b></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="blk g" aria-labelledby="s2">
+    <h2 class="sec" id="s2">Accounts and access</h2>
+    <div class="meta"><b>Security</b>Roles throughout</div>
+    <div class="body">
+      <p>Two roles, admin and user, control what each person can see and do, and restricted pages lead to a clear "forbidden" page. Accounts use hashed passwords (bcrypt) and token-based sign-in, with a forgot-password flow that sends a reset link.</p>
+    </div>
+  </section>
+
+  <section class="blk g alt" aria-labelledby="s3">
+    <h2 class="sec" id="s3">Data and forms</h2>
+    <div class="meta"><b>Architecture</b>One codebase</div>
+    <div class="body">
+      <ul>
+        <li><b>Next.js API routes</b> serve the app, with MongoDB models in Mongoose for users, projects, tasks, teams, chats, events, notifications and logs.</li>
+        <li><b>TanStack Query</b> handles server state, so lists and details refresh when the data changes.</li>
+        <li><b>React Hook Form and Zod</b> validate every form end to end, so the same rules apply in the browser and on the server.</li>
+        <li><b>shadcn/ui and Tailwind CSS</b> keep the interface consistent across modules.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="blk g" aria-labelledby="stack">
+    <h2 class="sec" id="stack">Built with</h2>
+    <div class="meta"><b>Stack</b>Tools and services</div>
+    <div class="body">
+      <table class="stack-t">
+        <tr><th scope="row">Frontend</th><td>Next.js 16 (App Router), TypeScript, shadcn/ui, Tailwind CSS, Lucide icons</td></tr>
+        <tr><th scope="row">State and forms</th><td>TanStack Query, React Hook Form, Zod</td></tr>
+        <tr><th scope="row">Backend</th><td>Next.js API routes, JWT, bcrypt</td></tr>
+        <tr><th scope="row">Data</th><td>MongoDB, Mongoose</td></tr>
+      </table>
+      <div class="acts"><a class="u" href="https://teamsync-one.vercel.app" target="_blank" rel="noopener">Open the UniTide live demo</a><a class="u" href="https://github.com/TVRCloud/unitide" target="_blank" rel="noopener">View the UniTide code on GitHub</a></div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact g" aria-labelledby="close-title">
+    <h2 class="sec" id="close-title">Read next</h2>
+    <p>Where I work now.</p>
+    <a class="big" href="/work/oppam">Oppam</a>
+    <div class="more">
+      <a class="u" href="/work">All work</a>
+      <a class="u" href="/about">About Amegh</a>
+      <a class="u" href="mailto:hey@amegh.me">Email hey@amegh.me</a>
+    </div>
+  </section>
+</main>
+
+<!-- @footer -->
+</body>
+</html>
