@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- @head -->
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="hero" id="top">
+  <!-- @nav -->
+  <!-- @crumbs -->
+  <h1>Finance App</h1>
+  <div class="g">
+    <div class="about">
+      <h2 class="col-h">Overview</h2>
+      <p>An expense tracker that reads my bank SMS, so I only step in when something looks wrong.</p>
+    </div>
+    <div class="c">
+      <h2 class="col-h">Type</h2>
+      <ul><li>Personal project</li></ul>
+    </div>
+    <div class="c">
+      <h2 class="col-h">Platforms</h2>
+      <ul><li>Web, PWA</li><li>Android</li></ul>
+    </div>
+    <div class="c">
+      <h2 class="col-h">Written by</h2>
+      <ul><li><a class="u" href="/about" rel="author">Amegh</a></li><li>Updated 24 Nov 2026</li></ul>
+    </div>
+  </div>
+</header>
+
+<main id="content">
+  <section class="blk g" aria-labelledby="s0">
+    <h2 class="sec" id="s0">Why I built it</h2>
+    <div class="meta"><b>The problem</b>Manual logging stops</div>
+    <div class="body">
+      <p>I built Finance App to track my own daily spending. It started as a side project, something to think about after long days on payment systems at work, and grew into a web app with an Android companion, live updates and automatic import from bank SMS.</p>
+      <p>Most expense apps fail for one reason: you stop entering expenses. I wanted the boring part, logging each card spend or EMI, to happen on its own.</p>
+    </div>
+  </section>
+
+  <section class="blk g alt" aria-labelledby="s1">
+    <h2 class="sec" id="s1">What it does</h2>
+    <div class="meta"><b>Features</b>Money, at a glance</div>
+    <div class="body">
+      <ul>
+        <li><b>Money in and out:</b> income, expenses and transfers, with categories and tags.</li>
+        <li><b>Monthly budgets</b> with alert thresholds, so overspending shows up before the month ends.</li>
+        <li><b>Loans</b> with repayment history, and <b>savings goals</b>.</li>
+        <li><b>Analytics</b> across six months.</li>
+        <li><b>Live balances</b> over Socket.IO, and <b>web push alerts</b> for budgets and due dates.</li>
+        <li><b>Installable as a PWA.</b></li>
+        <li><b>An Android companion</b> that captures bank SMS on the phone, with a Review tab for anything it isn't sure about.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="blk g" aria-labelledby="s2">
+    <h2 class="sec" id="s2">How the SMS import works</h2>
+    <div class="meta"><b>Architecture</b>Phone, n8n, server</div>
+    <div class="body">
+      <p>A bank message comes in and a correct transaction appears. Getting there safely took most of the design work.</p>
+      <ol>
+        <li><b>A message arrives.</b> The Android app captures bank SMS on the phone. I can also forward a message to my n8n "Expense Assistant" on WhatsApp or Telegram.</li>
+        <li><b>n8n spots bank messages.</b> It checks for phrases such as "Credit Card ending" or "loan account". Anything else goes through the assistant's normal flow.</li>
+        <li><b>The server does all the parsing.</b> n8n only forwards the raw text to one endpoint, <code>POST /api/integrations/sms</code>. Parsers on the server handle EMI messages, card spends and the phrasing common to Indian banks and UPI.</li>
+        <li><b>It matches the message to my data:</b> the last four digits to an account or credit card, a loan account number to the right loan.</li>
+        <li><b>It never guesses.</b> A message it can't match with confidence goes to a review inbox instead of becoming a wrong transaction. I get a push notification and fix it in a tap.</li>
+        <li><b>It never counts twice.</b> Each message's normalised text is hashed and stored, so the same SMS captured by the phone and forwarded through n8n creates one transaction, not two.</li>
+        <li><b>Phone capture wins.</b> When the same spend arrives from several sources, the phone's SMS capture beats a forwarded message, which beats a bank-app notification.</li>
+      </ol>
+      <p>When a bank uses a new message format, I add its trigger phrase in n8n and a parser on the server. Every import starts as unreviewed, and each correction is kept as a record.</p>
+    </div>
+  </section>
+
+  <section class="blk g alt" aria-labelledby="s3">
+    <h2 class="sec" id="s3">The hard parts</h2>
+    <div class="meta"><b>Lessons</b>What took longest</div>
+    <div class="body">
+      <h3>Calculation logic</h3>
+      <p>Budgets, loan repayments, savings goals and running balances all depend on the same transactions. One edit ripples through all of them, and with live updates the numbers have to be right the moment they change.</p>
+      <h3>Adding a phone app to a web app</h3>
+      <p>The web app came first. Adding the Android companion meant reshaping the APIs and data flow so both share one backend, without breaking what already worked.</p>
+      <h3>Learning Flutter</h3>
+      <p>I'd never built in Flutter. I learned it while building the companion, using AI tools to get up to speed. It was the steepest new skill in the project.</p>
+    </div>
+  </section>
+
+  <section class="blk g" aria-labelledby="learned">
+    <h2 class="sec" id="learned">What I learned</h2>
+    <div class="meta"><b>Takeaways</b>For any automation</div>
+    <div class="body">
+      <ul>
+        <li><b>Queue when unsure, don't guess.</b> A review inbox is cheaper than a wrong balance.</li>
+        <li><b>Deduplicate on content.</b> The same event will arrive more than once, from more than one place.</li>
+        <li><b>AI tools make a new platform approachable,</b> but the architecture decisions are still yours to own.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="blk g alt" aria-labelledby="stack">
+    <h2 class="sec" id="stack">Built with</h2>
+    <div class="meta"><b>Stack</b>Tools and services</div>
+    <div class="body">
+      <table class="stack-t">
+        <tr><th scope="row">Web app</th><td>Next.js 15 (App Router), TypeScript, shadcn/ui, Tailwind CSS v4, TanStack Query, React Hook Form, Zod</td></tr>
+        <tr><th scope="row">Backend</th><td>Next.js API routes, NextAuth, Socket.IO, web push (VAPID)</td></tr>
+        <tr><th scope="row">Data</th><td>MongoDB with Mongoose, Redis</td></tr>
+        <tr><th scope="row">Automation</th><td>n8n (WhatsApp and Telegram assistant, SMS forwarding)</td></tr>
+        <tr><th scope="row">Mobile</th><td>Flutter and Kotlin (Android SMS capture)</td></tr>
+        <tr><th scope="row">Quality</th><td>Vitest, role-based access (user and admin)</td></tr>
+      </table>
+      <div class="acts"><a class="u" href="https://github.com/TVRCloud/expense-tracker" target="_blank" rel="noopener">View the Finance App code on GitHub</a></div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact g" aria-labelledby="close-title">
+    <h2 class="sec" id="close-title">Read next</h2>
+    <p>Another project I built on my own.</p>
+    <a class="big" href="/work/unitide">UniTide</a>
+    <div class="more">
+      <a class="u" href="/work">All work</a>
+      <a class="u" href="/about">About Amegh</a>
+      <a class="u" href="mailto:hey@amegh.me">Email hey@amegh.me</a>
+    </div>
+  </section>
+</main>
+
+<!-- @footer -->
+</body>
+</html>

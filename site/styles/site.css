@@ -1,4 +1,4 @@
-/* Shared styles for /about and /work/*. Mirrors the home page design in index.html. */
+/* Styles for every page. Home-only rules are scoped under body.home at the end. */
 @font-face{font-family:"Bricolage Grotesque";src:url(/fonts/bricolage-grotesque-latin.woff2) format("woff2");font-weight:300 800;font-style:normal;font-display:swap}
 :root{
   --bg:#fff;--band:#f5f5f7;--ink:#111214;--mute:#6a6e78;--line:rgba(0,0,0,.12);--accent:#0066cc;--strike:#f4e11b;--strike-ink:#14130a;--strike-mute:#54500f;
@@ -96,3 +96,52 @@ footer a:hover{color:var(--strike-ink)}
   .contact p{grid-column:1/-1}
 }
 @media (max-width:480px){.nav nav a[href$="#experience"]{display:none}}
+
+/* long-form text (about, case studies) */
+.blk .body h3{font-size:clamp(20px,2vw,28px);letter-spacing:-.03em;font-weight:600;line-height:1.2;margin:28px 0 8px}
+.blk .body h3:first-child{margin-top:0}
+.blk .body ol{padding-left:1.2em}
+.blk .body ol li{padding:0 0 14px 4px}
+.blk .body code{font-size:.85em;background:var(--band);padding:1px 6px;border-radius:6px}
+.alt .body code{background:rgba(20,19,10,.1)}
+.blk .body .note{color:var(--mute);font-size:17px}
+.stack-t{width:100%;border-collapse:collapse;font-size:17px;letter-spacing:-.01em}
+.stack-t th,.stack-t td{text-align:left;vertical-align:top;padding:10px 0;border-top:1px solid var(--line)}
+.stack-t th{font-weight:500;width:32%;padding-right:16px}
+.stack-t td{color:var(--mute)}
+
+/* ---- home page ---- */
+.home .hero{min-height:100svh;padding-bottom:clamp(32px,5vw,64px)}
+.home .hero h1{margin:clamp(32px,7vw,110px) 0 0;max-width:none;user-select:none;cursor:default}
+.home .hero h1 .ln{display:block}
+@media (min-width:700px){.home .hero h1 .ln{white-space:nowrap}}
+.home .hero .g{margin-top:auto;padding-top:clamp(48px,8vw,120px)}
+.home .hero .about{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:20px;align-content:start}
+
+.work-head{padding:clamp(64px,10vw,150px) var(--pad) clamp(24px,4vw,56px)}
+.work-head p{margin-top:16px;font-size:18px}
+.proj{padding-block:clamp(56px,9vw,130px)}
+.proj.alt{background:var(--strike)}
+.proj h3{grid-column:1/-1;font-size:clamp(44px,9vw,148px);line-height:.95;letter-spacing:-.05em;font-weight:600;margin-bottom:clamp(28px,5vw,72px)}
+.proj .meta{grid-column:span 3;color:var(--mute);font-size:16px;line-height:1.45}
+.proj .meta b{display:block;color:var(--ink);font-weight:500;margin-bottom:2px}
+.proj .desc{grid-column:span 4;font-size:clamp(19px,1.8vw,24px);line-height:1.35;letter-spacing:-.02em}
+.proj .more{grid-column:span 5;font-size:17px;line-height:1.45}
+.proj .acts{margin-top:18px}
+
+.sec-pad{padding-block:clamp(64px,10vw,150px)}
+.sec-pad > h2{grid-column:1/-1;margin-bottom:clamp(28px,5vw,64px)}
+.lead{grid-column:span 7;font-size:clamp(19px,1.8vw,24px);line-height:1.4;letter-spacing:-.02em}
+.lead p+p{margin-top:16px}
+.side{grid-column:9/span 4;color:var(--mute);font-size:16px;line-height:1.5}
+.side b{display:block;color:var(--ink);font-weight:500;margin-bottom:4px}
+
+.mail{grid-column:1/-1;display:inline-block;margin-top:clamp(24px,4vw,56px);font-size:clamp(34px,8vw,136px);line-height:1;letter-spacing:-.05em;font-weight:600;text-decoration:none;justify-self:start;word-break:break-all}
+.mail:hover{color:var(--accent)}
+
+@media (max-width:900px){
+  .proj .meta,.proj .desc,.proj .more,.lead,.side{grid-column:1/-1}
+  .proj .meta{margin-bottom:16px}
+  .proj .desc{margin-bottom:20px}
+  .side{margin-top:28px}
+}

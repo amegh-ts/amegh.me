@@ -4,6 +4,8 @@
   "compatibility_date": "2026-11-08",
   // Forces https://amegh.me (no http, no www) with 301s, then serves the static site.
   "main": "src/index.js",
+  // Vite builds the site into dist/ before every deploy and branch preview.
+  "build": { "command": "npm run build" },
   // Custom domains. Deploying creates the DNS records and certificates for both.
   // www.amegh.me is only there so people typing "www" land on the site:
   // src/index.js answers it with a 301 to https://amegh.me/<path>.
@@ -12,7 +14,7 @@
     { "pattern": "www.amegh.me", "custom_domain": true }
   ],
   "assets": {
-    "directory": "./portfolio",
+    "directory": "./dist",
     "binding": "ASSETS",
     // Run src/index.js before assets so http:// and www. requests are redirected too.
     "run_worker_first": true,
