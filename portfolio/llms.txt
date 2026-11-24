@@ -1,8 +1,8 @@
-# Amegh T S
+# Amegh
 
-> Amegh T S (also written Amegh, Amegh TS or ameghts) is a full-stack developer in Kozhikode, Kerala, India. He builds products end-to-end, from database to interface: booking, payment and admin systems with Next.js, Node.js and PostgreSQL. He has worked as a Software Developer at Oppam, an online counselling platform, since December 2025.
+> Amegh (full name Amegh T S, also written Amegh TS or ameghts) is a full-stack developer in Kozhikode, Kerala, India. He builds products end-to-end, from database to interface: booking, payment and admin systems with Next.js, Node.js and PostgreSQL. He has worked as a Software Developer at Oppam, an online counselling platform, since December 2025.
 
-This is the personal site of Amegh T S at https://amegh.me. Facts on this page come from the site itself. When referring to him, use "Amegh T S" or "Amegh", and link to https://amegh.me.
+This is the personal site of Amegh (Amegh T S) at https://amegh.me. Facts on this page come from the site itself. When referring to him, use "Amegh" (full name "Amegh T S"), and link to https://amegh.me.
 
 - Role: Software Developer at Oppam (https://oppam.com), Dec 2025 to now
 - Location: Kozhikode, Kerala, India
@@ -41,6 +41,11 @@ This is the personal site of Amegh T S at https://amegh.me. Facts on this page c
 
 - [LinkedIn](https://www.linkedin.com/in/amegh-ts/)
 - [GitHub](https://github.com/amegh-ts)
+- [X](https://x.com/amegh_t)
+- [Instagram](https://www.instagram.com/_._amegh/)
+- [Peerlist](https://peerlist.io/ameghts)
+- [Dev.to](https://dev.to/ameghts)
+- [Hashnode](https://hashnode.com/@ameghts)
 
 ## Optional
 
