@@ -1,0 +1,40 @@
+# Post-merge check. After a merge to main, Cloudflare Workers Builds deploys
+# amegh.me. This waits until the live site serves this commit's build, then
+# checks every page, the redirects, headers, sitemap and 404 handling.
+name: Deploy check
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-check
+  cancel-in-progress: true
+
+jobs:
+  live:
+    name: Check live site
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Build (to compare against what is live)
+        run: npm run build
+
+      - name: Wait for deploy and check amegh.me
+        env:
+          LIVE_WAIT_SECONDS: 600
+        run: npm run check:live
