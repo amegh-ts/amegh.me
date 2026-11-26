@@ -24,15 +24,25 @@ const normalise = (h) => h.replace(CF_SCRIPT, "").replace(/\s+$/, "");
 
 const get = (url, opts = {}) => fetch(url, { redirect: "manual", headers: { "user-agent": "amegh.me-deploy-check" }, ...opts });
 
-// 1. Wait for the new build to be live.
-const want = normalise(fs.readFileSync(fileOf("/"), "utf8"));
+// 1. Wait for the new build to be live. Compare every page, not just the
+// home page: a release may change only some pages.
+const routes = Object.keys(pages).filter((r) => !pages[r].noindex);
+const want = Object.fromEntries(routes.map((r) => [r, normalise(fs.readFileSync(fileOf(r), "utf8"))]));
+const stale = async () => {
+  const out = [];
+  for (const r of routes) {
+    const res = await get(BASE + r).catch(() => null);
+    const body = res ? await res.text() : "";
+    if (res?.status !== 200 || normalise(body) !== want[r]) out.push(r);
+  }
+  return out;
+};
 const start = Date.now();
 for (;;) {
-  const res = await get(`${BASE}/`).catch(() => null);
-  const body = res ? await res.text() : "";
-  if (res?.status === 200 && normalise(body) === want) break;
+  const left = await stale();
+  if (!left.length) break;
   if ((Date.now() - start) / 1000 > WAIT) {
-    console.log(`::error::${BASE}/ still does not match this build after ${WAIT}s`);
+    console.log(`::error::still not live after ${WAIT}s: ${left.join(", ")}`);
     process.exit(1);
   }
   await sleep(15000);
